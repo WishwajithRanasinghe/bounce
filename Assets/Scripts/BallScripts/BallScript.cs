@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BallScript : MonoBehaviour
 {
     [SerializeField] private float _jumpforce = 5f,_extraJumpForce = 10f;
     [SerializeField] private float _moveSpeed = 10f,_extraSpeed = 50f;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] LayerMask groundLayer;
     private float _gravityScale;
     private Vector2 _startPos;
     
@@ -15,6 +18,7 @@ public class BallScript : MonoBehaviour
     private Rigidbody2D _rBody;
     private Vector2 _direction,_ballScale;
     private BallCollision _collisionScript;
+    private bool isGrounded = false;
 
     private void Start()
     {
@@ -43,22 +47,13 @@ public class BallScript : MonoBehaviour
         {
             _direction.x = Input.GetAxis("Horizontal")*_moveSpeed;
         }
-        
-        
-        if(_collisionScript.isGrounded == true)
-        {
-            _direction.y = Mathf.Max(_direction.y,-1);
-        }
-        else if(_collisionScript.isBounce == true)
-            _direction.y = Mathf.Max(_direction.y, -10f);
-        else
-        {
-            _direction += Physics2D.gravity * Time.deltaTime * _gravityScale;
-        }
-        if(Input.GetKeyDown(KeyCode.Space) && _collisionScript.isGrounded == true || _collisionScript.isBounce == true)
+       
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+
+        // Jump input
+        if (isGrounded && Input.GetButtonDown("Jump"))
         {
             Jump();
-            //Jump2();
         }
 
     }//GetInput
@@ -69,18 +64,8 @@ public class BallScript : MonoBehaviour
     
     private void Jump()
     {
-        if(_collisionScript.isHighJump == true)
-        {
-            _direction = Vector2.up * _extraJumpForce;
-            _collisionScript.isGrounded = false;
-        }
-        else
-        {
-            _direction = Vector2.up * _jumpforce;
-            _collisionScript.isGrounded = false;
-        }
-        
-
+        _rBody.velocity = new Vector2(_rBody.velocity.x,0f);
+        _rBody.AddForce(new Vector2(0f,_jumpforce),ForceMode2D.Impulse);
     }
     
     public void ReBornBall()
@@ -93,7 +78,7 @@ public class BallScript : MonoBehaviour
         {
             _rBody.position = _collisionScript.spawnPos;
            // BallSize(_collisionScript.lastCheckSize);
-            _collisionScript.isGrounded = false;
+            //_collisionScript.isGrounded = false;
             
         }
   

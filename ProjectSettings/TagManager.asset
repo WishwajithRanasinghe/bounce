@@ -13,8 +13,7 @@ TagManager:
   - Helth
   - Next
   - Ball
-  - Water
-  - Bounce
+  - Damage
   layers:
   - Default
   - TransparentFX

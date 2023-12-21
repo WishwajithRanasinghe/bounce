@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8382981893971869882}
   m_Layer: 0
   m_Name: spider
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46186ab7fdf0fc4a8fdafc0c0d0ebdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDistance: 3
-  _miniDistance: -3
-  _moveSpeed: 1
+  _maxDistance: 2.79
+  _miniDistance: -2.79
+  _moveSpeed: 2
   _isHorizontal: 0

@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 4836644431428773886}
   - component: {fileID: 3857959901071094523}
   - component: {fileID: 5736837091831269866}
-  - component: {fileID: 4962277852598625248}
+  - component: {fileID: 5642775166351980156}
   - component: {fileID: 5612068821624204948}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 411644173366913565}
+  - {fileID: 5461126468614255429}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &3857959901071094523
@@ -51,7 +52,7 @@ Rigidbody2D:
   m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -98,7 +99,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4962277852598625248
+--- !u!114 &5642775166351980156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,13 +108,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 699333075334190867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2541b3e814d4c64a8d896f4ac0f7f79, type: 3}
+  m_Script: {fileID: 11500000, guid: cc8847ae4eb267a49ba3294e2bc2f056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpforce: 10
-  _extraJumpForce: 10
-  _moveSpeed: 4
-  _extraSpeed: 50
+  jumpForce: 150
+  _moveSpeed: 500
+  groundCheck: {fileID: 5461126468614255429}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &5612068821624204948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,12 +130,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _powerTime: 2
-  isGrounded: 0
+  _winGameObject: {fileID: 0}
+  _reSpawnSprite: {fileID: -553377673, guid: 38f1b1ef28a82534eb15e2922db9e275, type: 3}
+  _openGate: {fileID: 633912529, guid: 38f1b1ef28a82534eb15e2922db9e275, type: 3}
+  needFlip: 0
   isFast: 0
   isHighJump: 0
   isBig: 0
   isSmallRing: 0
   isBigRing: 0
+  isWater: 0
+  score: 0
+  helth: 0
+  ringsForWin: 6
+  spawnPos: {x: 0, y: 0}
+  lastCheckSize: 0
+--- !u!1 &1701065546056930245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5461126468614255429}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5461126468614255429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701065546056930245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4836644431428773886}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6875549527003091251
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +250,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: -1366585646, guid: 5058fa262ec92ae4e9daab46c3e795e1, type: 3}
-  m_Color: {r: 1, g: 0.14528298, b: 0.14528298, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

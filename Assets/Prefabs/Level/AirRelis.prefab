@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8425992609068242283}
   - component: {fileID: 8874876464070903084}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4405566952912499287}
   - component: {fileID: 2338206343738233580}
   - component: {fileID: 2497334761922314420}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AirRelis
   m_TagString: AirRelis
   m_Icon: {fileID: 0}

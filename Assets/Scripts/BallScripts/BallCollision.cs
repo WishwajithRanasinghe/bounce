@@ -12,17 +12,11 @@ public class BallCollision : MonoBehaviour
 {
     [SerializeField] private float _powerTime = 2f;
     [SerializeField] private GameObject _winGameObject;
-    [SerializeField] private LayerMask _whatLayer;
     [SerializeField] private Sprite _reSpawnSprite,_openGate;
-    
-    [SerializeField] private float  _ypos,_yBigPos;
     private float _startSeveTime;
-    private Vector2 _size;
-    private BallScript _mainScript;
+    private BallMoveScript _mainScript;
     public bool needFlip;
-
-    private Collider2D[] _checkLayer;
-    public bool isGrounded,isFast,isHighJump,isBig,isSmallRing,isBigRing,isBounce; 
+    public bool isFast,isHighJump,isBig,isSmallRing,isBigRing,isWater; 
     public int score;
     public int helth = 5,ringsForWin = 5;
     public Vector2 spawnPos;   
@@ -31,40 +25,14 @@ public class BallCollision : MonoBehaviour
     
     private void Start()
     {
-        _mainScript = GetComponent<BallScript>();
+        _mainScript = GetComponent<BallMoveScript>();
         _startSeveTime = _powerTime;
        
     }//start
-    private void CkeckGround()
-    {
-        _size = new Vector2( GetComponent<CircleCollider2D>().radius/2,GetComponent<CircleCollider2D>().radius+ 0.01f);
-        if(isBig == true)
-        {
-            _checkLayer = Physics2D.OverlapBoxAll(new Vector2(transform.position.x,transform.position.y -_yBigPos),_size,0f,_whatLayer);
-        }
-        else
-        {
-            _checkLayer = Physics2D.OverlapBoxAll(new Vector2(transform.position.x,transform.position.y -_ypos),_size,0f,_whatLayer); 
-        }
-        //Collider2D[] _checkLayer = Physics2D.OverlapBoxAll(new Vector2(transform.position.x,transform.position.y -_ypos),_size,0f,_whatLayer);
-
-        for (int i = 0; i < _checkLayer.Length; i++)
-        {
-            if(_checkLayer[i].transform.tag == "Ground" /*&& _checkLayer[i].transform.position.y < transform.position.y*/)
-            {
-                isGrounded = true;
-               Debug.Log("ela ela"); 
-            }
-            else if(_checkLayer[i].transform.tag == "Bounce")
-            {
-                isBounce = true;
-            }    
-        }
-    }
+   
     
     private void Update()
     {
-        CkeckGround();
         if(isFast == true || isHighJump == true )
         {
             _powerTime -= Time.deltaTime;
@@ -76,6 +44,7 @@ public class BallCollision : MonoBehaviour
             isHighJump = false;
         }
         winGate();
+        _mainScript.BallSize(isBig);
     }
     private void winGate()
     {
@@ -87,52 +56,29 @@ public class BallCollision : MonoBehaviour
         }
 
     }
-    private void OnDrawGizmosSelected()
-    {
-        
-        if(isBig == true)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawCube(new Vector2(transform.position.x,transform.position.y - _yBigPos),new Vector3( GetComponent<CircleCollider2D>().radius/2,GetComponent<CircleCollider2D>().radius + 0.1f,1f));
-        }
-        else
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawCube(new Vector2(transform.position.x,transform.position.y - _ypos),new Vector3( GetComponent<CircleCollider2D>().radius/2,GetComponent<CircleCollider2D>().radius + 0.1f,1f));
-        }
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch(collision.transform.tag)
         {
-            case "Ground":
-            
-            
-            break;
-
-            case "EXJump":
-            isHighJump = true;
-            isGrounded = true;
-            break;
-
+           
             case "EXSpeed":
             isFast = true;
-            isGrounded = true;
+
             break;
 
             case "AirPump":
             isBig = true;
-            isGrounded = true;
+
             break;
 
             case "AirRelis":
             isBig = false;
-            isGrounded = true;
+
             break;
 
             case "SmallRing":
-            isGrounded = true;
+
             if(isBig == true){return;}
             score += 50;
             isSmallRing = true;
@@ -151,7 +97,7 @@ public class BallCollision : MonoBehaviour
             break;
             
             case "BigRing":
-            isGrounded = true;
+
             isBigRing = true;
             score += 50;
             ringsForWin --;
@@ -197,11 +143,11 @@ public class BallCollision : MonoBehaviour
             case "Next":
             if(ringsForWin <= 0)
             {
-                
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
                 Debug.Log("Next");
             }
             break;
-            default:
+            case "Damage":
             if(helth > 0)
             {
                 _mainScript.ReBornBall();
@@ -212,35 +158,13 @@ public class BallCollision : MonoBehaviour
             else
             Debug.Log ("gameover!");
             break;
-        }
-        
-         
 
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if(collision.transform.tag == "Ground")
-        {
-            isGrounded = false;
-        }
-        if(collision.transform.tag == "Bounce")
-        {
-            isBounce = false;
-            isGrounded = true;
-            isGrounded = false;
+            default:
+
+            
+            break;
         }
 
     }
-    public void JumpPad()
-    {
-        isGrounded = true;
-        Invoke(nameof(RelesJump),0.01f);
-
-    }
-    public void RelesJump()
-    {
-        isGrounded = false;
-    } 
-
 
 }//class

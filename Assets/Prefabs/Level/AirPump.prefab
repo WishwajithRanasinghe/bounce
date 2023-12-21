@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3708773017275010354}
   - component: {fileID: 4534014774905850408}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 419257300843733634}
   - component: {fileID: 1862975067797357092}
   - component: {fileID: 3216288218785409468}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AirPump
   m_TagString: AirPump
   m_Icon: {fileID: 0}
