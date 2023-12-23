@@ -18,11 +18,13 @@ public class BallMoveScript : MonoBehaviour
     private float _horizontalInput;
     private float _startGravityScale;
     private BallCollision _collisionScript;
+    private AudioScript _audio;
 
     private void Start()
     {
         _rbody = GetComponent<Rigidbody2D>();
         _collisionScript = GetComponent<BallCollision>();
+        _audio = GetComponent<AudioScript>();
         _startGravityScale = _rbody.gravityScale;
         _ballScale = transform.localScale;
         _startPos = _rbody.position;
@@ -32,7 +34,7 @@ public class BallMoveScript : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal");
         _rbody.velocity = new Vector2(_horizontalInput*_moveSpeed * Time.deltaTime,_rbody.velocity.y);
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-        _isWater = Physics2D.OverlapCircle(groundCheck.position, 0.2f, waterLayer);
+        _isWater = Physics2D.OverlapCircle(groundCheck.position, -1f, waterLayer);
         if (_isGrounded && Input.GetButtonDown("Jump"))
         {
             Jump();
@@ -49,6 +51,7 @@ public class BallMoveScript : MonoBehaviour
 
     private void Jump()
     {
+        _audio.Jump();
         _rbody.velocity = new Vector2(_rbody.velocity.x * _horizontalInput * Time.deltaTime, 0f);
         _rbody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
     }//Jump

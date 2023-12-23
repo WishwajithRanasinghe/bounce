@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 public class BallCollision : MonoBehaviour
 {
@@ -22,10 +23,13 @@ public class BallCollision : MonoBehaviour
     public Vector2 spawnPos;   
     public bool lastCheckSize;
 
+    private AudioScript _audio;
     
     private void Start()
     {
         _mainScript = GetComponent<BallMoveScript>();
+        _winGameObject.GetComponentInChildren<Light2D>().color = Color.red;
+        _audio = GetComponent<AudioScript>();
         _startSeveTime = _powerTime;
        
     }//start
@@ -52,6 +56,7 @@ public class BallCollision : MonoBehaviour
         {
             _winGameObject.GetComponent<SpriteRenderer>().sprite = _openGate;
             _winGameObject.GetComponent<SpriteRenderer>().flipX = needFlip;
+            _winGameObject.GetComponentInChildren<Light2D>().color = Color.blue;
 
         }
 
@@ -64,20 +69,28 @@ public class BallCollision : MonoBehaviour
            
             case "EXSpeed":
             isFast = true;
+            _audio.Life();
 
             break;
 
             case "AirPump":
+            if(isBig != true)
+            _audio.AirUp();
             isBig = true;
+            
 
             break;
 
             case "AirRelis":
+            if(isBig != false)
+            _audio.AirDown();
             isBig = false;
+            
 
             break;
 
             case "SmallRing":
+            
 
             if(isBig == true){return;}
             score += 50;
@@ -86,10 +99,20 @@ public class BallCollision : MonoBehaviour
             if(collision.gameObject.GetComponent<BoxCollider2D>() != null)
             {
                 collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+                _audio.Collector();
+                if(collision.gameObject.GetComponentInChildren<Light2D>() != null)
+                {
+                    collision.gameObject.GetComponentInChildren<Light2D>().enabled = false;
+                }
             }
             if(collision.gameObject.GetComponentInChildren<SpriteRenderer>() != null)
             {
                 collision.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.gray;
+                _audio.Collector();
+                if(collision.gameObject.GetComponentInChildren<Light2D>() != null)
+                {
+                    collision.gameObject.GetComponentInChildren<Light2D>().enabled = false;
+                }
             }
             
             
@@ -104,20 +127,35 @@ public class BallCollision : MonoBehaviour
             if(collision.gameObject.GetComponent<BoxCollider2D>() != null)
             {
                 collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+                _audio.Collector();
+                if(collision.gameObject.GetComponentInChildren<Light2D>() != null)
+                {
+                    collision.gameObject.GetComponentInChildren<Light2D>().enabled = false;
+                }
             }
             if(collision.gameObject.GetComponentInChildren<SpriteRenderer>() != null)
             {
                 collision.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.gray;
+                _audio.Collector();
+                if(collision.gameObject.GetComponentInChildren<Light2D>() != null)
+                {
+                    collision.gameObject.GetComponentInChildren<Light2D>().enabled = false;
+                }
             }
             
             
             break;
             case "ReSpawner":
                 spawnPos = collision.transform.position;
+                _audio.Collector();
 
                 if(collision.gameObject.GetComponent<CircleCollider2D>() != null)
                 {
                     collision.gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
+                    if(collision.gameObject.GetComponentInChildren<Light2D>() != null)
+                    {
+                        collision.gameObject.GetComponentInChildren<Light2D>().color = Color.green;
+                    }
                 }
                 if(collision.gameObject.GetComponent<SpriteRenderer>() != null)
                 {
@@ -131,10 +169,12 @@ public class BallCollision : MonoBehaviour
             case "winGate":
                 if(ringsForWin <= 0)
                 {
+                    
                     Debug.Log("WinThisLevel!");
                 }
             break;
             case "Helth":
+                _audio.Life();
                 helth ++;
                 score += 100;
                 Destroy(collision.gameObject);
@@ -144,19 +184,22 @@ public class BallCollision : MonoBehaviour
             if(ringsForWin <= 0)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+                _audio.WinGame();
                 Debug.Log("Next");
             }
             break;
             case "Damage":
-            if(helth > 0)
+            if(helth >= 0)
             {
                 _mainScript.ReBornBall();
+                _audio.ReSpawn();
                 isBig = lastCheckSize;
                 helth--;
             }
             
             else
-            Debug.Log ("gameover!");
+                Debug.Log ("gameover!");
+                _audio.GameOver();
             break;
 
             default:
