@@ -9,6 +9,7 @@ public class BallScript : MonoBehaviour
 {
     [SerializeField] private float _jumpforce = 5f,_extraJumpForce = 10f;
     [SerializeField] private float _moveSpeed = 10f,_extraSpeed = 50f;
+    
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
     private float _gravityScale;
@@ -30,6 +31,7 @@ public class BallScript : MonoBehaviour
     {
         GetInput();
         BallSize(_collisionScript.isBig);
+        
     }//Update
     private void FixedUpdate()
     {

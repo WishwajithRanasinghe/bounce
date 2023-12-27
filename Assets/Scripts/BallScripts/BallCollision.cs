@@ -5,8 +5,6 @@ using System.Xml.Serialization;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 
 public class BallCollision : MonoBehaviour
@@ -14,6 +12,7 @@ public class BallCollision : MonoBehaviour
     [SerializeField] private float _powerTime = 2f;
     [SerializeField] private GameObject _winGameObject;
     [SerializeField] private Sprite _reSpawnSprite,_openGate;
+    [SerializeField] private GameObject _scenetransition;
     private float _startSeveTime;
     private BallMoveScript _mainScript;
     public bool needFlip;
@@ -31,6 +30,8 @@ public class BallCollision : MonoBehaviour
         _winGameObject.GetComponentInChildren<Light2D>().color = Color.red;
         _audio = GetComponent<AudioScript>();
         _startSeveTime = _powerTime;
+        
+
        
     }//start
    
@@ -183,8 +184,10 @@ public class BallCollision : MonoBehaviour
             case "Next":
             if(ringsForWin <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
+                
                 _audio.WinGame();
+                _scenetransition = GameObject.FindGameObjectWithTag("Scene");
+                _scenetransition.GetComponent<LevelTransition>().LoadNext();
                 Debug.Log("Next");
             }
             break;

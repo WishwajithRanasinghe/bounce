@@ -18,6 +18,8 @@ public class BallMoveScript : MonoBehaviour
     private float _horizontalInput;
     private float _startGravityScale;
     private BallCollision _collisionScript;
+    [SerializeField] private ParticleSystem _smoke;
+
     private AudioScript _audio;
 
     private void Start()
@@ -46,6 +48,14 @@ public class BallMoveScript : MonoBehaviour
         else
         {
             _rbody.gravityScale = _startGravityScale;
+        }
+        if(_isGrounded && _rbody.velocity.magnitude >= 0.5f && _isWater == false)
+        {
+            _smoke.Play();
+        }
+        else
+        {
+            _smoke.Stop();
         }
     }
 

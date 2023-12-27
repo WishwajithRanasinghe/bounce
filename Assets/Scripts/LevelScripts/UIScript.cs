@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
@@ -10,6 +11,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] private TMP_Text _ringsText;
     [SerializeField] private TMP_Text _lifesText;
     [SerializeField] private TMP_Text _scoreText;
+    [SerializeField] private TMP_Text _levelName;
     private  BallCollision _ballScript;
     private int _rings;
     private int _lifes;
@@ -32,5 +34,7 @@ public class UIScript : MonoBehaviour
         _ringsText.text = "X " +_rings.ToString();
         _lifesText.text = "X " +_lifes.ToString();
         _scoreText.text = _score.ToString();
+        _levelName.text = "Level = " + SceneManager.GetActiveScene().buildIndex.ToString(); 
     }
+    
 }
