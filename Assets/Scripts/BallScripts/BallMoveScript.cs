@@ -29,7 +29,7 @@ public class BallMoveScript : MonoBehaviour
         _audio = GetComponent<AudioScript>();
         _startGravityScale = _rbody.gravityScale;
         _ballScale = transform.localScale;
-        _startPos = _rbody.position;
+        _startPos = transform.position;
     }
     private void Update()
     {

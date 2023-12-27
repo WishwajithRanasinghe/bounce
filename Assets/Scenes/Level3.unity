@@ -20705,30 +20705,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 699333075334190867, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 699333075334190867, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: m_TagString
-      value: Ball
-      objectReference: {fileID: 0}
-    - target: {fileID: 3857959901071094523, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3857959901071094523, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3857959901071094523, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3857959901071094523, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4836644431428773886, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.6
@@ -20769,86 +20745,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4962277852598625248, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: _jumpforce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4962277852598625248, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: _moveSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: ypos
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: _ypos
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: helth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: isBig
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: _helth
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: _yBigPos
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: _needFlip
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: _openGate
-      value: 
-      objectReference: {fileID: 633912529, guid: 38f1b1ef28a82534eb15e2922db9e275, type: 3}
-    - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: ringsForWin
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: _reSpawnSprite
-      value: 
-      objectReference: {fileID: -553377673, guid: 38f1b1ef28a82534eb15e2922db9e275, type: 3}
     - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
       propertyPath: _winGameObject
       value: 
       objectReference: {fileID: 1867501364}
-    - target: {fileID: 5612068821624204948, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: _whatLayer.m_Bits
-      value: 208
-      objectReference: {fileID: 0}
-    - target: {fileID: 5642775166351980156, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: waterLayer.m_Bits
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736837091831269866, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5736837091831269866, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798596089540322222, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798596089540322222, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6798596089540322222, guid: e2d8c8d973b01a24fb2b0e7547ecd22b, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

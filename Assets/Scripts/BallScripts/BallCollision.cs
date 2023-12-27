@@ -23,6 +23,7 @@ public class BallCollision : MonoBehaviour
     public bool lastCheckSize;
 
     private AudioScript _audio;
+    private UIScript _uIScript;
     
     private void Start()
     {
@@ -30,9 +31,8 @@ public class BallCollision : MonoBehaviour
         _winGameObject.GetComponentInChildren<Light2D>().color = Color.red;
         _audio = GetComponent<AudioScript>();
         _startSeveTime = _powerTime;
-        
+        _uIScript = GameObject.FindGameObjectWithTag("UI").GetComponent<UIScript>();
 
-       
     }//start
    
     
@@ -192,7 +192,7 @@ public class BallCollision : MonoBehaviour
             }
             break;
             case "Damage":
-            if(helth >= 0)
+            if(helth > 0)
             {
                 _mainScript.ReBornBall();
                 _audio.ReSpawn();
@@ -201,8 +201,14 @@ public class BallCollision : MonoBehaviour
             }
             
             else
+            {
                 Debug.Log ("gameover!");
                 _audio.GameOver();
+                _uIScript.GameOver();
+            }
+                
+
+
             break;
 
             default:
