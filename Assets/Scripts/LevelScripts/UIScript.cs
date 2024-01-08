@@ -33,6 +33,11 @@ public class UIScript : MonoBehaviour
         _lifes = _ballScript.helth;
         _score = _ballScript.score;
         UpdateText();
+
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            Restart();
+        }
     }
     public void GameOver()
     {

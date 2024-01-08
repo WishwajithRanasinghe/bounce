@@ -17,6 +17,7 @@ public class BallCollision : MonoBehaviour
     private BallMoveScript _mainScript;
     public bool needFlip;
     public bool isFast,isHighJump,isBig,isSmallRing,isBigRing,isWater; 
+    public bool _big;
     public int score;
     public int helth = 5,ringsForWin = 5;
     public Vector2 spawnPos;   
@@ -32,6 +33,10 @@ public class BallCollision : MonoBehaviour
         _audio = GetComponent<AudioScript>();
         _startSeveTime = _powerTime;
         _uIScript = GameObject.FindGameObjectWithTag("UI").GetComponent<UIScript>();
+        spawnPos = Vector2.zero;
+        _scenetransition.SetActive(true);
+        helth = DataPass._health;
+        score = DataPass._score;
 
     }//start
    
@@ -50,6 +55,9 @@ public class BallCollision : MonoBehaviour
         }
         winGate();
         _mainScript.BallSize(isBig);
+        DataPass._health = helth;
+        DataPass._score = score;
+        
     }
     private void winGate()
     {
@@ -196,12 +204,21 @@ public class BallCollision : MonoBehaviour
             {
                 _mainScript.ReBornBall();
                 _audio.ReSpawn();
-                isBig = lastCheckSize;
+                if(spawnPos == Vector2.zero)
+                {
+                    isBig = _big;
+                }
+                else
+                {
+                    isBig = lastCheckSize;
+                }
+                
                 helth--;
             }
             
             else
             {
+                _scenetransition.SetActive(false);
                 Debug.Log ("gameover!");
                 _audio.GameOver();
                 _uIScript.GameOver();

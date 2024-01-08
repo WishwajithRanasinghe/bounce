@@ -54,10 +54,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 11
+  m_Mass: 8
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 1.8
   m_Material: {fileID: 6200000, guid: 6ab8ea4f025bc8b40842cd50b87a3e8b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 130
-  _moveSpeed: 500
+  _moveSpeed: 600
   groundCheck: {fileID: 5461126468614255429}
   groundLayer:
     serializedVersion: 2
@@ -126,6 +126,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   _smoke: {fileID: 7846684075218560849}
+  _isBig: 0
 --- !u!114 &5612068821624204948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,10 +147,11 @@ MonoBehaviour:
   needFlip: 0
   isFast: 0
   isHighJump: 0
-  isBig: 1
+  isBig: 0
   isSmallRing: 0
-  isBigRing: 0
+  isBigRing: 1
   isWater: 0
+  _big: 0
   score: 0
   helth: 0
   ringsForWin: 6

@@ -17,6 +17,7 @@ TagManager:
   - Water
   - Scene
   - UI
+  - EXSpeed
   layers:
   - Default
   - TransparentFX
