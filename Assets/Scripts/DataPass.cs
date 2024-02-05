@@ -6,5 +6,6 @@ public class DataPass : MonoBehaviour
 {
     public static int _score;
     public static int _health;
+    public static int _levelNO;
 
 }
