@@ -13606,11 +13606,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1105445391627888519, guid: d798000f35ecc064e92faeec16361d60, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -79.6
+      value: -58.27
       objectReference: {fileID: 0}
     - target: {fileID: 1105445391627888519, guid: d798000f35ecc064e92faeec16361d60, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.5
+      value: 14.48
       objectReference: {fileID: 0}
     - target: {fileID: 1105445391627888519, guid: d798000f35ecc064e92faeec16361d60, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13650,19 +13650,19 @@ PrefabInstance:
       objectReference: {fileID: 1074132547}
     - target: {fileID: 5200054126343830579, guid: d798000f35ecc064e92faeec16361d60, type: 3}
       propertyPath: _xMax
-      value: 111.02
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 5200054126343830579, guid: d798000f35ecc064e92faeec16361d60, type: 3}
       propertyPath: _yMax
-      value: 1
+      value: 14.48
       objectReference: {fileID: 0}
     - target: {fileID: 5200054126343830579, guid: d798000f35ecc064e92faeec16361d60, type: 3}
       propertyPath: _xMini
-      value: -79.6
+      value: -114.18
       objectReference: {fileID: 0}
     - target: {fileID: 5200054126343830579, guid: d798000f35ecc064e92faeec16361d60, type: 3}
       propertyPath: _yMini
-      value: -42.94
+      value: -39.99
       objectReference: {fileID: 0}
     - target: {fileID: 5875067690884238657, guid: d798000f35ecc064e92faeec16361d60, type: 3}
       propertyPath: m_RenderingLayerMask
